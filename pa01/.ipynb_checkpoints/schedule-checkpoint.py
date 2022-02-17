@@ -5,6 +5,11 @@ by filtering, mapping, printing, etc.
 
 import json
 
+with open("courses20-21.json","r",encoding='utf-8') as jsonfile:
+    courses = json.load(jsonfile)
+    
+    print(courses)
+
 class Schedule():
     '''
     Schedule represent a list of Brandeis classes with operations for filtering
@@ -51,9 +56,17 @@ class Schedule():
             return self
         
     def title(self,phrase):
-        return null
+        
+        return Schedule([course for course in self.courses if course['name'] in phrase])
     
     def description(self,phrase):
-        return null
+        
+        return Schedule([course for course in self.courses if course['description'] in phrase])
+    
+    def enroll_limit(self):
+        
+        return Schedule([course for course in self.courses if course['limit'] == null])
+        
+    
 
  

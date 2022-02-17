@@ -5,6 +5,11 @@ by filtering, mapping, printing, etc.
 
 import json
 
+with open("courses20-21.json","r",encoding='utf-8') as jsonfile:
+    courses = json.load(jsonfile)
+    
+    print(courses)
+
 class Schedule():
     '''
     Schedule represent a list of Brandeis classes with operations for filtering
