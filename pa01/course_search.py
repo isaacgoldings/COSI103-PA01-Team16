@@ -64,6 +64,9 @@ def topmenu():
             name = input("enter a name:")
             schedule = schedule.name([name])
             #filter by a int in waiting list
+        elif command in ['c','code']:
+            code=input('enter a class code')
+            schedule = schedule.classcode([code])
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number:")
             schedule = schedule.waiting([waiting])
