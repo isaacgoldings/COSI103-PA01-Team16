@@ -51,10 +51,17 @@ class Schedule():
             return self
         
     def title(self,phrase):
-        return null
+        
+        return Schedule([course for course in self.courses if course['name'] in phrase])
     
     def description(self,phrase):
-        return null
+        
+        return Schedule([course for course in self.courses if course['description'] in phrase])
+    
+    def enroll_limit(self):
+        
+        return Schedule([course for course in self.courses if course['limit'] == null])
+        
     
 
  
