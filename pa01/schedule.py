@@ -78,8 +78,8 @@ class Schedule():
         return Schedule([course for course in self.courses if course['limit'] == null])
     #David's Filter
     def waiting(self,waitings):
-        waitingString = str(waitings[0])
-        return Schedule([course for course in self.courses if waitingString in course['waiting']])
+        waitingString = int(waitings[0])
+        return Schedule([course for course in self.courses if waitingString == course['waiting']])
         
     
     #Isaac's filter
