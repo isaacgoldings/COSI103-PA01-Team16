@@ -72,8 +72,8 @@ def topmenu():
             continue
 
         print("courses has",len(schedule.courses),'elements',end="\n\n")
-        print('here are the first 100')
-        for course in schedule.courses[:100]:
+        print('here are the courses')
+        for course in schedule.courses[:]:
             print_course(course)
         print('\n'*3)
 
