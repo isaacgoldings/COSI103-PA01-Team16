@@ -72,6 +72,13 @@ class Schedule():
         return Schedule([course for course in self.courses if course['independent_study'] == true])
     
         
-    
+    #lucians fliter
+    def classcode(ClassName):
+        equal= []
+        for course in courses:
+            if ClassName in course['code'][1]:
+                equal.append(course)
+        return("Titles matching = ",equal)
+
 
  
