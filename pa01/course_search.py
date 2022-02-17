@@ -83,4 +83,4 @@ def print_course(course):
 if __name__ == '__main__':
     topmenu()
 
-print(schedule)
+print(schedule.enrolled(5,100))
