@@ -2,7 +2,7 @@
 course_search is a Python script using a terminal based menu to help
 students search for courses they might want to take at Brandeis
 '''
-
+#git demonstration
 from schedule import Schedule
 import sys
 
@@ -47,6 +47,22 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+            #filter courses exactly matching the instructor input
+        elif command in ['i','instructor']:
+            instructor = input("enter an instructor:")
+            schedule = schedule.lastname([instructor])
+            #filter courses exactly matching the instructor email
+        elif command in ['e','email']:
+            email = input("enter an email:")
+            schedule = schedule.email([email])
+            #filter by a String in class description
+        elif command in ['d','description']:
+            description = input("enter a description:")
+            schedule = schedule.description([description])
+            #filter by a String in class title
+        elif command in ['n','name']:
+            name = input("enter a name:")
+            schedule = schedule.name([name])
         else:
             print('command',command,'is not supported')
             continue

@@ -8,7 +8,7 @@ import json
 with open("courses20-21.json","r",encoding='utf-8') as jsonfile:
     courses = json.load(jsonfile)
     
-    print(courses)
+ #   print(courses)
 
 class Schedule():
     '''
@@ -66,7 +66,19 @@ class Schedule():
     def enroll_limit(self):
         
         return Schedule([course for course in self.courses if course['limit'] == null])
-        
     
+    #Isaac's filter
+    def coursesPerTerm(filter):
+        return Schedule([course for course in self.courses if course['independent_study'] == true])
+    
+        
+    #lucians fliter
+    def classcode(ClassName):
+        equal= []
+        for course in courses:
+            if ClassName in course['code'][1]:
+                equal.append(course)
+        return("Titles matching = ",equal)
+
 
  
