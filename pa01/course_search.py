@@ -63,6 +63,9 @@ def topmenu():
         elif command in ['n','name']:
             name = input("enter a name:")
             schedule = schedule.name([name])
+        elif command in ['w','waiting']:
+            waiting = input("enter a waiting list number:")
+            schedule = schedule.waiting([waiting])
         else:
             print('command',command,'is not supported')
             continue

@@ -47,6 +47,25 @@ def topmenu():
         elif command in ['s','subject']:
             subject = input("enter a subject:")
             schedule = schedule.subject([subject])
+            #filter courses exactly matching the instructor input
+        elif command in ['i','instructor']:
+            instructor = input("enter an instructor:")
+            schedule = schedule.lastname([instructor])
+            #filter courses exactly matching the instructor email
+        elif command in ['e','email']:
+            email = input("enter an email:")
+            schedule = schedule.email([email])
+            #filter by a String in class description
+        elif command in ['d','description']:
+            description = input("enter a description:")
+            schedule = schedule.description([description])
+            #filter by a String in class title
+        elif command in ['n','name']:
+            name = input("enter a name:")
+            schedule = schedule.name([name])
+        elif command in ['w','waiting']:
+            waiting = input("enter a waiting list number:")
+            schedule = schedule.waiting([waiting])
         else:
             print('command',command,'is not supported')
             continue
@@ -67,3 +86,4 @@ def print_course(course):
 if __name__ == '__main__':
     topmenu()
 
+print(schedule.enrolled(5,100))
