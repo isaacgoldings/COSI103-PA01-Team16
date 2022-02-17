@@ -54,6 +54,16 @@ class Schedule():
         else:
             print("can't sort by "+str(field)+" yet")
             return self
+
+    #filter by string in the title
+    def name(self,phrase):
+        phraseString = str(phrase[0])
+        return Schedule([course for course in self.courses if phraseString in course['name']])
+    
+    #filter by string in the description
+    def description(self,descriptions):
+        descriptionString = str(descriptions[0])
+        return Schedule([course for course in self.courses if descriptionString in course['description']])
         
     def title(self,phrase):
         
@@ -66,13 +76,18 @@ class Schedule():
     def enroll_limit(self):
         
         return Schedule([course for course in self.courses if course['limit'] == null])
+    #David's Filter
+    def waiting(self,waitings):
+        waitingString = str(waitings[0])
+        return Schedule([course for course in self.courses if waitingString in course['waiting']])
+        
     
     #Isaac's filter
     def coursesPerTerm(filter):
         return Schedule([course for course in self.courses if course['independent_study'] == true])
     
         
-    #lucians fliter
+    #Lucians fliter
     def classcode(ClassName):
         equal= []
         for course in courses:

@@ -54,18 +54,23 @@ class Schedule():
         else:
             print("can't sort by "+str(field)+" yet")
             return self
-        
-    def title(self,phrase):
-        
-        return Schedule([course for course in self.courses if course['name'] in phrase])
+
+    #filter by string in the title
+    def name(self,phrase):
+        phraseString = str(phrase[0])
+        return Schedule([course for course in self.courses if phraseString in course['name']])
     
-    def description(self,phrase):
-        
-        return Schedule([course for course in self.courses if course['description'] in phrase])
+    #filter by string in the description
+    def description(self,descriptions):
+        descriptionString = str(descriptions[0])
+        return Schedule([course for course in self.courses if descriptionString in course['description']])
     
     def enroll_limit(self):
         
         return Schedule([course for course in self.courses if course['limit'] == null])
+    def waiting(self,waitings):
+        waitingString = str(waitings[0])
+        return Schedule([course for course in self.courses if waitingString in course['waiting']])
         
     
 
