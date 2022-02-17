@@ -8,7 +8,7 @@ import json
 with open("courses20-21.json","r",encoding='utf-8') as jsonfile:
     courses = json.load(jsonfile)
     
-    print(courses)
+ #   print(courses)
 
 class Schedule():
     '''
@@ -54,20 +54,23 @@ class Schedule():
         else:
             print("can't sort by "+str(field)+" yet")
             return self
+        
+    def title(self,phrase):
+        
+        return Schedule([course for course in self.courses if course['name'] in phrase])
     
-    #filter by string in the title
-    def name(self,phrase):
-        phraseString = str(phrase[0])
-        return Schedule([course for course in self.courses if phraseString in course['name']])
-    
-    #filter by string in the description
-    def description(self,descriptions):
-        descriptionString = str(descriptions[0])
-        return Schedule([course for course in self.courses if descriptionString in course['description']])
+    def description(self,phrase):
+        
+        return Schedule([course for course in self.courses if course['description'] in phrase])
     
     def enroll_limit(self):
         
         return Schedule([course for course in self.courses if course['limit'] == null])
+    
+    #Isaac's filter
+    def coursesPerTerm(filter):
+        return Schedule([course for course in self.courses if course['independent_study'] == true])
+    
         
     
 
