@@ -66,14 +66,11 @@ class Schedule():
     #Mat's filter
     def enroll_limit(self,null):
         return Schedule([course for course in self.courses if course['limit'] == null])
-<<<<<<< HEAD
-=======
     #David's Filter
     def waiting(self,waitings):
         waitingString = int(waitings[0])
         return Schedule([course for course in self.courses if waitingString == course['waiting']])
         
->>>>>>> 8c2d1b800dc8bec741cd7452e381cd427b4184b3
     
     #Isaac's filter
     def coursesPerTerm(self,filter):
