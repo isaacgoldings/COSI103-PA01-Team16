@@ -63,6 +63,7 @@ def topmenu():
         elif command in ['n','name']:
             name = input("enter a name:")
             schedule = schedule.name([name])
+            #filter by a int in waiting list
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number:")
             schedule = schedule.waiting([waiting])
@@ -71,8 +72,8 @@ def topmenu():
             continue
 
         print("courses has",len(schedule.courses),'elements',end="\n\n")
-        print('here are the first 10')
-        for course in schedule.courses[:10]:
+        print('here are the first 100')
+        for course in schedule.courses[:100]:
             print_course(course)
         print('\n'*3)
 

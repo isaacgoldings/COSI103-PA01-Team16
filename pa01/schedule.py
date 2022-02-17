@@ -55,13 +55,13 @@ class Schedule():
             print("can't sort by "+str(field)+" yet")
             return self
         
-    def title(self,phrase):
-        
-        return Schedule([course for course in self.courses if course['name'] in phrase])
+    def name(self,phrase):
+        phraseString = str(phrase[0])
+        return Schedule([course for course in self.courses if phraseString in course['name']])
     
-    def description(self,phrase):
-        
-        return Schedule([course for course in self.courses if course['description'] in phrase])
+    def description(self,descriptions):
+        descriptionString = str(descriptions[0])
+        return Schedule([course for course in self.courses if descriptionString in course['description']])
     
     #Mat's filter
     def enroll_limit(self,null):
