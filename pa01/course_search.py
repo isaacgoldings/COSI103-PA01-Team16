@@ -67,11 +67,17 @@ def topmenu():
         elif command in ['c','code']:
             code=input('enter a class code')
             schedule = schedule.classcode([code])
+            #filter by waiting list number
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number:")
             schedule = schedule.waiting([waiting])
+            #filter by independent study
         elif command in ['l', 'independent_study']:
             schedule = schedule.independentStudy()
+            #filter by enrollment limit
+        elif command in ['m', 'limit']:
+            limit = input("enter an enrollment limit:")
+            schedule = schedule.enroll_limit(limit)
         else:
             print('command',command,'is not supported')
             continue

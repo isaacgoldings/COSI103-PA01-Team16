@@ -64,8 +64,13 @@ class Schedule():
         return Schedule([course for course in self.courses if descriptionString in course['description']])
     
     #Mat's filter
-    def enroll_limit(self,null):
-        return Schedule([course for course in self.courses if course['limit'] == null])
+    def enroll_limit(self,lim):
+        limit = int(lim)
+        if limit > 0:
+            return Schedule([course for course in self.courses if course['limit'] == limit])
+        elif limit == 0:
+            return Schedule([course for course in self.courses if "null" in course['limit']])
+        
     #David's Filter
     def waiting(self,waitings):
         waitingString = int(waitings[0])
