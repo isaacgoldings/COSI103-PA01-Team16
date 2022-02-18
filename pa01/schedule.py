@@ -82,7 +82,7 @@ class Schedule():
         return Schedule([course for course in self.courses if course['independent_study'] == True])
     
         
-    #lucians fliter
+    #Lucians fliter
     def classcode(ClassName):
         equal= []
         for course in courses:

@@ -62,19 +62,19 @@ def topmenu():
             #filter by a String in class title
         elif command in ['n','name']:
             name = input("enter a name:")
-            schedule = schedule.name([name])
-            #filter by a int in waiting list
+            schedule = schedule.name([name]) #329F
+            #filter by code of class (Lucian)
         elif command in ['c','code']:
             code=input('enter a class code')
-            schedule = schedule.classcode([code])
-            #filter by waiting list number
+            schedule = schedule.code([code][1])
+            #filter by waiting list number (David)
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number:")
             schedule = schedule.waiting([waiting])
-            #filter by independent study
+            #filter by independent study (Isaac)
         elif command in ['l', 'independent_study']:
             schedule = schedule.independentStudy()
-            #filter by enrollment limit
+            #filter by enrollment limit (Mat)
         elif command in ['m', 'limit']:
             limit = input("enter an enrollment limit:")
             schedule = schedule.enroll_limit(limit)
@@ -87,6 +87,9 @@ def topmenu():
         for course in schedule.courses[:]:
             print_course(course)
         print('\n'*3)
+        schedule.load_courses()
+        schedule = schedule.enrolled(range(5,1000))
+        continue
 
 def print_course(course):
     '''
