@@ -45,38 +45,38 @@ def topmenu():
             term = input("enter a term:"+str(terms)+":")
             schedule = schedule.term([term]).sort('subject')
         elif command in ['s','subject']:
-            subject = input("enter a subject:")
+            subject = input("enter a subject: ")
             schedule = schedule.subject([subject])
             #filter courses exactly matching the instructor input
         elif command in ['i','instructor']:
-            instructor = input("enter an instructor:")
+            instructor = input("enter an instructor: ")
             schedule = schedule.lastname([instructor])
             #filter courses exactly matching the instructor email
         elif command in ['e','email']:
-            email = input("enter an email:")
+            email = input("enter an email: ")
             schedule = schedule.email([email])
             #filter by a String in class description
         elif command in ['d','description']:
-            description = input("enter a description:")
+            description = input("enter a description: ")
             schedule = schedule.description([description])
             #filter by a String in class title
         elif command in ['n','name']:
-            name = input("enter a name:")
+            name = input("enter a name: ")
             schedule = schedule.name([name]) #329F
             #filter by code of class (Lucian)
         elif command in ['c','code']:
-            code=input('enter a class code')
+            code=input('enter a class code: ')
             schedule = schedule.code([code][1])
             #filter by waiting list number (David)
         elif command in ['w','waiting']:
-            waiting = input("enter a waiting list number:")
+            waiting = input("enter a waiting list number: ")
             schedule = schedule.waiting([waiting])
             #filter by independent study (Isaac)
         elif command in ['l', 'independent_study']:
             schedule = schedule.independentStudy()
             #filter by enrollment limit (Mat)
         elif command in ['m', 'limit']:
-            limit = input("enter an enrollment limit:")
+            limit = input("enter an enrollment limit: ")
             schedule = schedule.enroll_limit(limit)
         else:
             print('command',command,'is not supported')
