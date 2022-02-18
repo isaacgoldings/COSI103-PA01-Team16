@@ -49,44 +49,51 @@ class Schedule():
         return Schedule([course for course in self.courses if course['subject'] in subjects])
 
     def sort(self,field):
+        '''sorts the list of courses by a specific field'''
         if field=='subject':
             return Schedule(sorted(self.courses, key= lambda course: course['subject']))
-        else:
-            print("can't sort by "+str(field)+" yet")
-            return self
+        print("can't sort by "+str(field)+" yet")
+        return self
         
     def name(self,phrase):
-        phraseString = str(phrase[0])
-        return Schedule([course for course in self.courses if phraseString in course['name']])
+        '''returns a list of course names that contains the user-inputted phrase'''
+        phrase_string = str(phrase[0])
+        return Schedule([course for course in self.courses if phrase_string in course['name']])
     
     def description(self,descriptions):
-        descriptionString = str(descriptions[0])
-        return Schedule([course for course in self.courses if descriptionString in course['description']])
+        '''returns a list of courses which contain the user-inputted phrase in the description'''
+        description_string = str(descriptions[0])
+        return Schedule([course for course in self.courses if description_string in course['description']])
     
     #Mat's filter
     def enroll_limit(self,lim):
+        '''returns a list of courses that either have the specific enrollment limit
+           or no limit at all'''
         limit = int(lim)
         if limit > 0:
             return Schedule([course for course in self.courses if course['limit'] == limit])
-        elif limit == 0:
-            return Schedule([course for course in self.courses if course['limit'] == None])
+            
+        return Schedule([course for course in self.courses if course['limit'] == None])
         
     #David's Filter
     def waiting(self,waitings):
-        waitingString = int(waitings[0])
-        return Schedule([course for course in self.courses if waitingString == course['waiting']])
+        '''returns a list of courses with a specific number of students waitlisted'''
+        waiting_string = int(waitings[0])
+        return Schedule([course for course in self.courses if waiting_string == course['waiting']])
         
     
     #Isaac's filter
-    def coursesPerTerm(self,filter):
+    def courses_per_term(self):
+        '''returns a list of courses that are independent study courses'''
         return Schedule([course for course in self.courses if course['independent_study'] == True])
     
         
-    #Lucians fliter
-    def classcode(ClassName):
+    #Lucians filter
+    def classcode(self,class_name):
+        '''returns a list of classes that contain the inputted name'''
         equal= []
-        for course in courses:
-            if ClassName in course['code'][1]:
+        for course in self.courses:
+            if class_name in course['code'][1]:
                 equal.append(course)
         return("Titles matching = ",equal)
 
