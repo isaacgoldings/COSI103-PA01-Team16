@@ -78,7 +78,7 @@ class Schedule():
     #Isaac's filter
     def courses_per_term(self):
         '''returns a list of courses that are independent study courses'''
-        return Schedule(course for course in self.courses if course['independent_study'] == True)
+        return Schedule([course for course in self.courses if course['independent_study'] == True])
     
     #Lucians filter
     def classcode(self,class_name):
