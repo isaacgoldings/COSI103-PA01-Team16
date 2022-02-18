@@ -69,7 +69,7 @@ class Schedule():
         if limit > 0:
             return Schedule([course for course in self.courses if course['limit'] == limit])
         elif limit == 0:
-            return Schedule([course for course in self.courses if "null" in course['limit']])
+            return Schedule([course for course in self.courses if course['limit'] == None])
         
     #David's Filter
     def waiting(self,waitings):
