@@ -62,7 +62,7 @@ def topmenu():
             #filter by a String in class title
         elif command in ['n','name']:
             name = input("enter a name: ")
-            SCHEDULE = SCHEDULE.name([name]) #329F
+            SCHEDULE = SCHEDULE.name([name])
             #filter by code of class (Lucian)
         elif command in ['c','code']:
             code=input('enter a class code: ')
