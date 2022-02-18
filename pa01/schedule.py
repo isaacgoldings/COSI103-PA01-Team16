@@ -69,7 +69,7 @@ class Schedule():
             
         return Schedule([course for course in self.courses if course['limit'] == None])
         
-    #David's Filter
+    #David's Filter for the waitlist
     def waiting(self,waitings):
         '''returns a list of courses with a specific number of students waitlisted'''
         waiting_string = int(waitings[0])
