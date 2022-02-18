@@ -3,12 +3,12 @@ course_search is a Python script using a terminal based menu to help
 students search for courses they might want to take at Brandeis
 '''
 #git demonstration
+#import sys
 from schedule import Schedule
-import sys
 
-schedule = Schedule()
-schedule.load_courses()
-schedule = schedule.enrolled(range(5,1000)) # eliminate courses with no students
+SCHEDULE = Schedule()
+SCHEDULE.load_courses()
+SCHEDULE = SCHEDULE.enrolled(range(5,1000)) # eliminate courses with no students
 
 TOP_LEVEL_MENU = '''
 quit
@@ -22,13 +22,13 @@ description (filter by phrase in description)
 timeofday (filter by day and time, e.g. meets at 11 on Wed)
 '''
 
-terms = {c['term'] for c in schedule.courses}
+terms = {c['term'] for c in SCHEDULE.courses}
 
 def topmenu():
     '''
     topmenu is the top level loop of the course search app
     '''
-    global schedule
+    global SCHEDULE
     while True:         
         command = input(">> (h for help) ")
         if command=='quit':
@@ -38,57 +38,57 @@ def topmenu():
             print('-'*40+'\n\n')
             continue
         elif command in ['r','reset']:
-            schedule.load_courses()
-            schedule = schedule.enrolled(range(5,1000))
+            SCHEDULE.load_courses()
+            SCHEDULE = SCHEDULE.enrolled(range(5,1000))
             continue
         elif command in ['t', 'term']:
             term = input("enter a term:"+str(terms)+":")
-            schedule = schedule.term([term]).sort('subject')
+            SCHEDULE = SCHEDULE.term([term]).sort('subject')
         elif command in ['s','subject']:
             subject = input("enter a subject: ")
-            schedule = schedule.subject([subject])
+            SCHEDULE = SCHEDULE.subject([subject])
             #filter courses exactly matching the instructor input
         elif command in ['i','instructor']:
             instructor = input("enter an instructor: ")
-            schedule = schedule.lastname([instructor])
+            SCHEDULE = SCHEDULE.lastname([instructor])
             #filter courses exactly matching the instructor email
         elif command in ['e','email']:
             email = input("enter an email: ")
-            schedule = schedule.email([email])
+            SCHEDULE = SCHEDULE.email([email])
             #filter by a String in class description
         elif command in ['d','description']:
             description = input("enter a description: ")
-            schedule = schedule.description([description])
+            SCHEDULE = SCHEDULE.description([description])
             #filter by a String in class title
         elif command in ['n','name']:
             name = input("enter a name: ")
-            schedule = schedule.name([name]) #329F
+            SCHEDULE = SCHEDULE.name([name]) #329F
             #filter by code of class (Lucian)
         elif command in ['c','code']:
             code=input('enter a class code: ')
-            schedule = schedule.code([code][1])
+            SCHEDULE = SCHEDULE.code([code][1])
             #filter by waiting list number (David)
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number: ")
-            schedule = schedule.waiting([waiting])
+            SCHEDULE = SCHEDULE.waiting([waiting])
             #filter by independent study (Isaac)
         elif command in ['l', 'independent_study']:
-            schedule = schedule.independentStudy()
+            SCHEDULE = SCHEDULE.courses_per_term()
             #filter by enrollment limit (Mat)
         elif command in ['m', 'limit']:
             limit = input("enter an enrollment limit: ")
-            schedule = schedule.enroll_limit(limit)
+            SCHEDULE = SCHEDULE.enroll_limit(limit)
         else:
             print('command',command,'is not supported')
             continue
 
-        print("courses has",len(schedule.courses),'elements',end="\n\n")
+        print("courses has",len(SCHEDULE.courses),'elements',end="\n\n")
         print('here are the courses')
-        for course in schedule.courses[:]:
+        for course in SCHEDULE.courses[:]:
             print_course(course)
         print('\n'*3)
-        schedule.load_courses()
-        schedule = schedule.enrolled(range(5,1000))
+        SCHEDULE.load_courses()
+        SCHEDULE = SCHEDULE.enrolled(range(5,1000))
         continue
 
 def print_course(course):
@@ -101,4 +101,4 @@ def print_course(course):
 if __name__ == '__main__':
     topmenu()
 
-print(schedule.enrolled(5,100))
+print(SCHEDULE.enrolled(5,100))
