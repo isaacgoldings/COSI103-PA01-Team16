@@ -3,7 +3,7 @@ schedule maintains a list of courses with features for operating on that list
 by filtering, mapping, printing, etc.
 '''
 import json
-
+#This is a small change
 class Schedule():
     '''
     Schedule represent a list of Brandeis classes with operations for filtering
