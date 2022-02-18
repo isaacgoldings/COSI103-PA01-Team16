@@ -70,6 +70,8 @@ def topmenu():
         elif command in ['w','waiting']:
             waiting = input("enter a waiting list number:")
             schedule = schedule.waiting([waiting])
+        elif command in ['l', 'independent_study']:
+            schedule = schedule.independentStudy()
         else:
             print('command',command,'is not supported')
             continue
