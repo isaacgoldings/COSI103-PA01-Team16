@@ -2,13 +2,7 @@
 schedule maintains a list of courses with features for operating on that list
 by filtering, mapping, printing, etc.
 '''
-
 import json
-
-with open("courses20-21.json","r",encoding='utf-8') as jsonfile:
-    courses = json.load(jsonfile)
-    
- #   print(courses)
 
 class Schedule():
     '''
@@ -67,7 +61,7 @@ class Schedule():
     
     #Mat's filter
     def enroll_limit(self,lim):
-        '''returns a list of courses that either have the specific enrollment limit
+        '''returns a list of courses that either have the specific enrollment limit 
            or no limit at all'''
         limit = int(lim)
         if limit > 0:
@@ -81,13 +75,11 @@ class Schedule():
         waiting_string = int(waitings[0])
         return Schedule([course for course in self.courses if waiting_string == course['waiting']])
         
-    
     #Isaac's filter
     def courses_per_term(self):
         '''returns a list of courses that are independent study courses'''
-        return Schedule([course for course in self.courses if course['independent_study'] == True])
+        return Schedule(course for course in self.courses if course['independent_study'] == True)
     
-        
     #Lucians filter
     def classcode(self,class_name):
         '''returns a list of classes that contain the inputted name'''
@@ -96,7 +88,3 @@ class Schedule():
             if class_name in course['code'][1]:
                 equal.append(course)
         return("Titles matching = ",equal)
-
-
-
- 
